@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1024092394706",
+    "firebase_url": "https://bloom-reader-alpha-debug.firebaseio.com",
+    "project_id": "bloom-reader-alpha-debug",
+    "storage_bucket": "bloom-reader-alpha-debug.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024092394706:android:d9fb00fef7eaadbc",
+        "android_client_info": {
+          "package_name": "org.sil.bloom.reader.alpha.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024092394706-gjhah52iq7hdda8oct7cokr5nslm1l3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEgfgrjpr0GrlBRVKUfUggwpSmt4zXy4A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
