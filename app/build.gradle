@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId "org.sil.bloom.reader"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode versionMajor * 100000 + versionMinor * 1000 + versionRelease.toInteger()
         versionName "${versionMajor}.${versionMinor}.${versionRelease}"

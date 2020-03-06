@@ -3,6 +3,7 @@ package org.sil.bloom.reader;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -99,7 +100,8 @@ public class InitializeLibraryTask extends AsyncTask<Void, Void, Void> {
             progressBarParams.setMargins(30, 1, 30, 30);    // top = 1
             main.mLoadingProgressBar.setLayoutParams(progressBarParams);
             main.mLoadingProgressBar.setIndeterminate(false);
-            main.mLoadingProgressBar.setProgressTintList(ColorStateList.valueOf(0xffd65649));    // @bloom-red: #d65649 (+ alpha = ff for opaque)
+            if (Build.VERSION.SDK_INT >= 21)
+                main.mLoadingProgressBar.setProgressTintList(ColorStateList.valueOf(0xffd65649));    // @bloom-red: #d65649 (+ alpha = ff for opaque)
 
             linearLayout.addView(main.mLoadingTextView);
             linearLayout.addView(main.mLoadingProgressBar);
