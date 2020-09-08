@@ -37,6 +37,9 @@ public class ReportAnalyticsTask extends AsyncTask<ReportAnalyticsTaskParams, Vo
             }
         }
         Analytics.with(BloomReaderApplication.getBloomApplicationContext()).track(reportAnalyticsTaskParams[0].event, reportAnalyticsTaskParams[0].properties);
+
+        Analytics.with(BloomReaderApplication.getBloomApplicationContext()).flush();
+
         return null;
     }
 

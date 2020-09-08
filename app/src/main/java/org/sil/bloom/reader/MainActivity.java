@@ -296,7 +296,21 @@ public class MainActivity extends BaseActivity
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+
+                    final TextView statsMessage = findViewById(R.id.stats_message);
+                    statsMessage.setText("Attempting to send reading stats...");
+                    new EnsureStatsSentAsyncTask(new EnsureStatsSentAsyncTask.AsyncResponse(){
+                        @Override
+                        public void processComplete(boolean success){
+                            statsMessage.setText(success ? "All reading stats sent." : "Failed to check if stats were sent.");
+                        }
+                    }).execute();
+                }
+            };
             drawer.addDrawerListener(toggle);
             toggle.syncState();
             configureActionBar(toggle);
@@ -340,6 +354,8 @@ public class MainActivity extends BaseActivity
         if (onResumeIsWaitingForStoragePermission)
             resumeMainActivity();
     }
+
+    ;
 
     private String getVersionAndDateText(String versionName, String date) {
         // Not bothering trying to internationalize this for now...
@@ -815,6 +831,13 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+//    @Override
+//    public boolean onMenuOpened(int featureId, Menu menu) {
+//        TextView statsMessage = findViewById(R.id.stats_message);
+//        statsMessage.setText(getStatsTextForMenu());
+//        return super.onMenuOpened(featureId, menu);
+//    }
+
     private void showLocationMessage() {
         // Report what we will do about location in analytics.
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -918,7 +941,7 @@ public class MainActivity extends BaseActivity
 
     // invoked by click on bloomUrl textview in nav_header_main because it has onClick property
     public void bloomUrlClicked(View v) {
-        // for some reason, it doesn't work with just bloomlibrary.org. Seems to thing a URL
+        // for some reason, it doesn't work with just bloomlibrary.org. Seems to think a URL
         // must have http://www. Fails to resolve activity.
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.bloomlibrary.org"));
         if (browserIntent.resolveActivity(getPackageManager()) != null) {

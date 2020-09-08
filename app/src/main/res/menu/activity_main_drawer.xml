@@ -28,6 +28,8 @@
             android:icon="@drawable/bookshelf"
             android:title="@string/find_books_on_device"
             />
+        <!-- Purposefully not localized for now because
+             it is only displayed for alpha -->
         <item
             android:id="@+id/nav_test_location_analytics"
             android:title="Check Location Analytics"

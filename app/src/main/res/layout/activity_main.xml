@@ -27,7 +27,16 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
         app:itemTextColor="@color/colorPrimaryDark"
-        app:itemIconTint="@color/colorPrimaryDark"
-        />
+        app:itemIconTint="@color/colorPrimaryDark">
+        <TextView
+            android:id="@+id/stats_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:color="@color/colorDeemphasizeText"
+            android:text="Attempting to send reading stats..."
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"/>
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
